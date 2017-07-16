@@ -17,6 +17,7 @@ export class Couchbase {
         this.manager = CBLManager.sharedInstance();
         if (!this.manager){
             console.log("MANAGER ERROR:Can not create share instance of CBLManager");
+            throw new Error("MANAGER ERROR:Can not create share instance of CBLManager");
         }
         var errorRef = new interop.Reference();
 
@@ -24,6 +25,7 @@ export class Couchbase {
 
         if (!this.database){
           console.log(errorRef.value);
+          throw new Error(errorRef.value);
         }
     }
     createDocument(data: Object, documentId?: string){
@@ -36,6 +38,7 @@ export class Couchbase {
 
         if (!errorRef){
             console.log("DOCUMENT ERROR:" + errorRef.value);
+            throw new Error("DOCUMENT ERROR:" + errorRef.value);
         }
 
         return documentId;
@@ -59,6 +62,7 @@ export class Couchbase {
 
       if (!errorRef){
         console.error("DOCUMENT ERROR", errorRef.value);
+        throw new Error("DOCUMENT ERROR " + errorRef.value);
       }
     }
 
@@ -136,6 +140,7 @@ export class Couchbase {
 
         if (!replication){
           console.error("PULL ERROR");
+          throw new Error("PULL ERROR");
         }
 
         return new Replicator(replication);
@@ -148,6 +153,7 @@ export class Couchbase {
 
         if (!replication){
            console.error("PUSH ERROR");
+           throw new Error("PUSH ERROR");
         }
 
         return new Replicator(replication);;
