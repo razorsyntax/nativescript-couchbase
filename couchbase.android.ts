@@ -18,6 +18,7 @@ export class Couchbase {
             this.database = this.manager.getDatabase(databaseName);
         } catch (exception) {
             console.error("MANAGER ERROR:", exception.message);
+            throw new Error("MANAGER ERROR: " + exception.message);
         }
     }
 
@@ -28,6 +29,7 @@ export class Couchbase {
             document.putProperties(this.objectToMap(data));
         } catch (exception) {
             console.error("DOCUMENT ERROR:", exception.message);
+            throw new Error("DOCUMENT ERROR: " + exception.message);
         }
         return documentId;
     }
@@ -46,6 +48,7 @@ export class Couchbase {
             document.putProperties(this.objectToMap(data));
         } catch (exception) {
             console.error("DOCUMENT ERROR", exception.message);
+            throw new Error("DOCUMENT ERROR: " + exception.message);
         }
     }
 
@@ -112,6 +115,7 @@ export class Couchbase {
             replication = this.database.createPullReplication(new java.net.URL(remoteUrl));
         } catch (exception) {
             console.error("PULL ERROR", exception.message);
+            throw new Error("PULL ERROR: " + exception.message);
         }
         return new Replicator(replication);
     }
@@ -122,6 +126,7 @@ export class Couchbase {
             replication = this.database.createPushReplication(new java.net.URL(remoteUrl));
         } catch (exception) {
             console.error("PUSH ERROR", exception.message);
+            throw new Error("PUSH ERROR: " + exception.message);
         }
         return new Replicator(replication);
     }
