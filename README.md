@@ -104,7 +104,7 @@ database.createView("people", "1", function(document, emitter) {
 #### Querying a MapReduce View
 
 ```javascript
-var rows = database.executeQuery("people", {descending : false, limit : 20,  skip : true, startKey: "name to strat with", endKey:"name to end at"});
+var rows = database.executeQuery("people", {descending : false, limit : 20,  skip : 1, startKey: "name to strat with", endKey:"name to end at"});
 for(var i = 0; i < rows.length; i++) {
     personList.push(rows[i]);
 }
