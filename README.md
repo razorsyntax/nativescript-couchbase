@@ -1,3 +1,6 @@
+# This Project is No Longer Supported Or Maintained
+
+
 # Couchbase Lite Plugin for Telerik NativeScript
 
 Couchbase Lite is a NoSQL embedded database for mobile devices.  It is a replacement for common database technologies like SQLite and Core Data.
